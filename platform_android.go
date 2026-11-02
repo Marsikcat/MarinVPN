@@ -58,12 +58,12 @@ func coreGlobs(string) []string {
 	return []string{filepath.Join(libDir(), "libolcrtc*.so")}
 }
 
-const noCoreMsg = "в сборке нет ядра olcrtc — переустановите olcvpn"
+const noCoreMsg = "в сборке нет ядра olcrtc — переустановите MarinVPN"
 
 func vkturnClient(string) (string, error) {
 	client := filepath.Join(libDir(), "libvkturn.so")
 	if _, err := os.Stat(client); err != nil {
-		return "", fmt.Errorf("в сборке нет клиента VK TURN — переустановите olcvpn")
+		return "", fmt.Errorf("в сборке нет клиента VK TURN — переустановите MarinVPN")
 	}
 	return client, nil
 }

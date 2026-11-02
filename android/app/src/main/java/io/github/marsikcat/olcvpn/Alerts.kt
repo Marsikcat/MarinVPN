@@ -59,11 +59,11 @@ object Alerts {
             return
         }
         pendingInstall = path
-        notify(ctx, NOTE_INSTALL, "Обновление olcvpn скачано", "Нажмите, чтобы установить")
+        notify(ctx, NOTE_INSTALL, "Обновление MarinVPN скачано", "Нажмите, чтобы установить")
     }
 
     fun vpnPermission(ctx: Context) {
-        notify(ctx, NOTE_VPN, "Нужно разрешение на VPN", "Откройте olcvpn и подключитесь — Android спросит разрешение")
+        notify(ctx, NOTE_VPN, "Нужно разрешение на VPN", "Откройте MarinVPN и подключитесь — Android спросит разрешение")
     }
 
     fun clear(ctx: Context) {

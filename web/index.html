@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>olcvpn</title>
+<title>MarinVPN</title>
 <style>
   :root{
     --bg:#0e1116; --bg2:#141922; --card:#171d27; --line:#242c39;
@@ -191,7 +191,7 @@
 
   <div class="top">
     <img class="logo" src="logo.png" alt="">
-    <div class="title">olcvpn</div>
+    <div class="title">MarinVPN</div>
     <div class="sub" id="subname"></div>
     <button class="share-btn" id="btnShare" title="Поделиться серверами" hidden>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -362,7 +362,7 @@
         <div class="msg" id="updMsg"></div>
         <div class="msg" id="advMsg"></div>
         <div class="note" id="adminNote"></div>
-        <div class="note"><button class="lnk" id="btnLic">Лицензии</button> olcvpn и сторонних компонентов</div>
+        <div class="note"><button class="lnk" id="btnLic">Лицензии</button> MarinVPN и сторонних компонентов</div>
       </div>
       <pre id="log" hidden></pre>
     </div>
@@ -378,7 +378,7 @@
       <button class="srvdel" id="shareClose" title="Закрыть">✕</button>
     </div>
     <div class="note" style="margin-top:4px">
-      Отправьте текст или покажите QR-код. Получатель вставляет текст в olcvpn:
+      Отправьте текст или покажите QR-код. Получатель вставляет текст в MarinVPN:
       «Подписка» → «Импортировать». Ссылку подписки понимает и OlConnect на телефоне.
     </div>
     <div id="shareItems" class="mt"></div>
@@ -407,11 +407,11 @@
     </div>
     <div class="seg seg3" id="licSeg" style="margin-top:14px">
       <button data-lic="third-party">Компоненты</button>
-      <button data-lic="olcvpn">olcvpn</button>
+      <button data-lic="olcvpn">MarinVPN</button>
       <button data-lic="gpl-3.0">GPL-3.0</button>
     </div>
     <pre class="lic" id="licText"></pre>
-    <div class="note">Исходный код и как всё собрать — github.com/Marsikcat/olcvpn</div>
+    <div class="note">Исходный код и как всё собрать — github.com/Marsikcat/MarinVPN</div>
   </div>
 </div>
 
@@ -724,7 +724,7 @@ async function qrPicture(f){
   return asURL(f);
 }
 
-/* Оболочка Android передаёт сюда то, чем поделились с olcvpn: ссылку или
+/* Оболочка Android передаёт сюда то, чем поделились с MarinVPN: ссылку или
    текст из мессенджера, ссылку olconnect:// из браузера, картинку с QR. */
 window.olcImport = async (text, picture) => {
   $('subPanel').classList.add('open');
@@ -738,7 +738,7 @@ window.olcImport = async (text, picture) => {
 };
 
 /* ── поделиться ──────────────────────────────────────────────
-   Текст собирает olcvpn: подписка уходит ссылкой на подписку, серверы
+   Текст собирает MarinVPN: подписка уходит ссылкой на подписку, серверы
    VK TURN — своими ссылками. Галочки сужают выбор; null — всё. */
 let shareSel = null;
 

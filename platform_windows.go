@@ -57,7 +57,7 @@ func coreGlobs(dir string) []string {
 	}
 }
 
-const noCoreMsg = "рядом с olcvpn.exe нет ни одного ядра olcrtc"
+const noCoreMsg = "рядом с MarinVPN.exe нет ни одного ядра olcrtc"
 
 // vkturnClient returns the vk-turn client binary, or why it is missing.
 func vkturnClient(dir string) (string, error) {
@@ -73,7 +73,7 @@ func vkturnClient(dir string) (string, error) {
 // olcrtc-fork.exe — the very core the release ships — so after the TUN came
 // up the core's own reconnects went into its own SOCKS and the link looped.
 func ownProcesses(dir string) []string {
-	names := []string{"olcvpn.exe", "sing-box.exe", "vkturn-client.exe", "olcrtc.exe"}
+	names := []string{"MarinVPN.exe", "olcvpn.exe", "sing-box.exe", "vkturn-client.exe", "olcrtc.exe"}
 	seen := map[string]bool{}
 	for _, n := range names {
 		seen[strings.ToLower(n)] = true

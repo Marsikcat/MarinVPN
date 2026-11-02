@@ -60,7 +60,7 @@ func runWindow(url string, a *app, t *tray) (ok bool) {
 	w := webview2.NewWithOptions(webview2.WebViewOptions{
 		AutoFocus: true,
 		WindowOptions: webview2.WindowOptions{
-			Title:  "olcvpn",
+			Title:  "MarinVPN",
 			Width:  520,
 			Height: 900,
 			Center: true,

@@ -228,7 +228,7 @@ func (s *shell) handle(m shellMsg) {
 	case "revoked":
 		// VPN отобрали — туннель без TUN тут никому не нужен: пользователь
 		// ждёт, что olcvpn отключился, как и показывает система.
-		a.log.add("Android отключил VPN olcvpn — отключаюсь")
+		a.log.add("Android отключил VPN MarinVPN — отключаюсь")
 		go a.tun.Stop()
 	}
 }

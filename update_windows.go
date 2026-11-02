@@ -30,7 +30,7 @@ func (a *app) installUpdate(info updateInfo) error {
 
 	a.log.addf("обновление: качаю %s (%.1f МБ)", info.AssetName, float64(info.AssetSize)/(1<<20))
 
-	tmp, err := os.CreateTemp("", "olcvpn-update-*.zip")
+	tmp, err := os.CreateTemp("", "MarinVPN-update-*.zip")
 	if err != nil {
 		return err
 	}
@@ -48,14 +48,26 @@ func (a *app) installUpdate(info updateInfo) error {
 	if err != nil {
 		return fmt.Errorf("архив не распаковался: %w", err)
 	}
-	if _, err := os.Stat(filepath.Join(root, "olcvpn.exe")); err != nil {
-		return fmt.Errorf("в архиве нет olcvpn.exe")
+	exePath, err := os.Executable()
+	if err != nil {
+		return fmt.Errorf("не удалось определить имя программы: %w", err)
+	}
+	exeName := filepath.Base(exePath)
+	if exeName != "MarinVPN.exe" && exeName != "olcvpn.exe" {
+		if _, err := os.Stat(filepath.Join(root, "MarinVPN.exe")); err == nil {
+			exeName = "MarinVPN.exe"
+		} else {
+			exeName = "olcvpn.exe"
+		}
+	}
+	if _, err := os.Stat(filepath.Join(root, exeName)); err != nil {
+		return fmt.Errorf("в архиве нет %s", exeName)
 	}
 
 	a.log.add("обновление: распаковано, перезапускаюсь")
 	a.tun.Stop()
 
-	if err := writeSwapScript(a.dir, root); err != nil {
+	if err := writeSwapScript(a.dir, root, exeName); err != nil {
 		return err
 	}
 	return launchSwapScript(a.dir)
@@ -115,7 +127,7 @@ func unzip(archive, dest string) (string, error) {
 }
 
 const swapScript = `@echo off
-rem Подменяет файлы olcvpn после выхода старого процесса и запускает новый.
+rem Подменяет файлы MarinVPN после выхода старого процесса и запускает новый.
 :wait
 tasklist /FI "PID eq %d" 2>nul | find "%d" >nul
 if not errorlevel 1 (
@@ -128,19 +140,19 @@ start "" "%s"
 del "%%~f0"
 `
 
-func writeSwapScript(dir, root string) error {
+func writeSwapScript(dir, root, exeName string) error {
 	pid := os.Getpid()
 	body := fmt.Sprintf(swapScript,
 		pid, pid,
 		root, dir,
 		filepath.Join(dir, "update"),
-		filepath.Join(dir, "olcvpn.exe"),
+		filepath.Join(dir, exeName),
 	)
-	return os.WriteFile(filepath.Join(dir, "olcvpn-update.cmd"), []byte(body), 0o755)
+	return os.WriteFile(filepath.Join(dir, "MarinVPN-update.cmd"), []byte(body), 0o755)
 }
 
 func launchSwapScript(dir string) error {
-	script := filepath.Join(dir, "olcvpn-update.cmd")
+	script := filepath.Join(dir, "MarinVPN-update.cmd")
 	cmd := exec.Command("cmd", "/c", script) //nolint:gosec // path is app-owned
 	cmd.Dir = dir
 	childAttr(cmd)

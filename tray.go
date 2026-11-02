@@ -47,8 +47,8 @@ func (t *tray) start() {
 
 func (t *tray) onReady() {
 	systray.SetIcon(trayIconFor(trayOff))
-	systray.SetTitle("olcvpn")
-	systray.SetTooltip("olcvpn — отключено")
+	systray.SetTitle("MarinVPN")
+	systray.SetTooltip("MarinVPN — отключено")
 	systray.SetOnTapped(t.onTap)
 
 	mOpen := systray.AddMenuItem("Открыть", "")
@@ -96,7 +96,7 @@ func (t *tray) onReady() {
 			} else {
 				mToggle.SetTitle("Подключить")
 			}
-			systray.SetTooltip("olcvpn — " + trayLabel(ph, t.a))
+			systray.SetTooltip("MarinVPN — " + trayLabel(ph, t.a))
 			if st := trayStateOf(ph); st != shown {
 				systray.SetIcon(trayIconFor(st))
 				shown = st

@@ -181,7 +181,7 @@ func getThroughSocks(proxyAddr, host, path string, limit int64) ([]byte, error) 
 		return nil, err
 	}
 	if _, err := fmt.Fprintf(conn,
-		"GET %s HTTP/1.1\r\nHost: %s\r\nUser-Agent: olcvpn\r\nConnection: close\r\n\r\n",
+		"GET %s HTTP/1.1\r\nHost: %s\r\nUser-Agent: MarinVPN\r\nConnection: close\r\n\r\n",
 		path, host); err != nil {
 		return nil, err
 	}

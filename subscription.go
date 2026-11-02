@@ -142,7 +142,7 @@ func fetchSubscription(subURL string) (*importResult, error) {
 	servers, openflux := parseURIList(string(body))
 	if len(servers) == 0 {
 		if openflux > 0 {
-			return nil, fmt.Errorf("в подписке только серверы OpenFlux — это другой протокол, olcvpn его не поддерживает")
+			return nil, fmt.Errorf("в подписке только серверы OpenFlux — это другой протокол, MarinVPN его не поддерживает")
 		}
 		return nil, fmt.Errorf("в подписке нет ни одного сервера")
 	}
@@ -234,7 +234,7 @@ func openfluxNote(n int) string {
 	if n == 0 {
 		return ""
 	}
-	return fmt.Sprintf("пропущено серверов OpenFlux: %d — это другой протокол со своей программой, olcvpn его не поддерживает", n)
+	return fmt.Sprintf("пропущено серверов OpenFlux: %d — это другой протокол со своей программой, MarinVPN его не поддерживает", n)
 }
 
 // parseURI understands both forms the OlConnect panel produces

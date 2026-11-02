@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "olcvpn"
+rootProject.name = "MarinVPN"
 include(":app")

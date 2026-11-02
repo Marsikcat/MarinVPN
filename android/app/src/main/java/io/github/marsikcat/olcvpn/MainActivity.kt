@@ -176,7 +176,7 @@ class MainActivity : Activity(), Backend.Listener {
         Alerts.pendingInstall = null
         if (!packageManager.canRequestPackageInstalls()) {
             Alerts.pendingInstall = path
-            Toast.makeText(this, "Разрешите olcvpn устанавливать приложения и вернитесь назад", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Разрешите MarinVPN устанавливать приложения и вернитесь назад", Toast.LENGTH_LONG).show()
             startActivity(Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:$packageName")))
             return
         }
@@ -370,7 +370,7 @@ class MainActivity : Activity(), Backend.Listener {
             if (!onApp) return
             runOnUiThread {
                 getSystemService(ClipboardManager::class.java)
-                    .setPrimaryClip(ClipData.newPlainText("olcvpn", text))
+                    .setPrimaryClip(ClipData.newPlainText("MarinVPN", text))
             }
         }
 

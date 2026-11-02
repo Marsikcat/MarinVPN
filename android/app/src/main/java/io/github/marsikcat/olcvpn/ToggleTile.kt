@@ -50,7 +50,7 @@ class ToggleTile : TileService(), Backend.Listener {
     private fun paint(st: JSONObject?) {
         val tile = qsTile ?: return
         tile.state = if (st?.optBoolean("running") == true) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
-        tile.label = "olcvpn"
+        tile.label = "MarinVPN"
         if (Build.VERSION.SDK_INT >= 29) tile.subtitle = st?.optString("title")?.takeIf { it.isNotEmpty() }
         tile.updateTile()
     }

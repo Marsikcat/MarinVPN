@@ -16,6 +16,8 @@ import (
 )
 
 const (
+	// Keep the Windows task and Run-key value names stable so existing
+	// autostart entries remain detectable and removable after the rebrand.
 	autostartTask   = "olcvpn"
 	autostartRunKey = `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
 )
@@ -119,7 +121,7 @@ func autostartTaskXML(username, exe string) string {
 const autostartXML = `<?xml version="1.0" encoding="UTF-16"?>
 <Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
   <RegistrationInfo>
-    <Description>olcvpn: запуск при входе в Windows</Description>
+    <Description>MarinVPN: запуск при входе в Windows</Description>
   </RegistrationInfo>
   <Triggers>
     <LogonTrigger>

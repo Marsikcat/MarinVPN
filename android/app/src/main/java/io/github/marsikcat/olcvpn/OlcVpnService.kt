@@ -199,10 +199,10 @@ class OlcVpnService : VpnService() {
         try {
             if (prepare(this) != null) {
                 Alerts.vpnPermission(this)
-                throw IllegalStateException("нет разрешения на VPN — откройте olcvpn и подключитесь оттуда")
+                throw IllegalStateException("нет разрешения на VPN — откройте MarinVPN и подключитесь оттуда")
             }
             val b = Builder()
-                .setSession("olcvpn")
+                .setSession("MarinVPN")
                 .setMtu(req.optInt("mtu", 1500))
                 .setConfigureIntent(
                     PendingIntent.getActivity(

@@ -21,7 +21,7 @@ func init() {
 	localTime()
 }
 
-// localTime: Go в Android всегда считает местным UTC, а пояс телефона olcvpn
+// localTime: Go в Android всегда считает местным UTC, а пояс телефона MarinVPN
 // передаёт в TZ — иначе время в строках ядра расходится с журналом.
 func localTime() {
 	if loc, err := time.LoadLocation(os.Getenv("TZ")); err == nil && os.Getenv("TZ") != "" {

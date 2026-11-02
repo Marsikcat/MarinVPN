@@ -1,4 +1,4 @@
-module olcvpn
+module github.com/Marsikcat/MarinVPN
 
 go 1.26
 

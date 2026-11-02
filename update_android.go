@@ -29,7 +29,7 @@ func (a *app) installUpdate(info updateInfo) error {
 	if err := os.MkdirAll(stage, 0o700); err != nil {
 		return err
 	}
-	apk := filepath.Join(stage, "olcvpn.apk")
+	apk := filepath.Join(stage, "MarinVPN.apk")
 	f, err := os.OpenFile(apk, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0o600)
 	if err != nil {
 		return err

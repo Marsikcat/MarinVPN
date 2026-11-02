@@ -1,8 +1,8 @@
 ﻿<#
-Собирает olcvpn для Android: бэкенд (этот репозиторий), ядро olcRTC и клиент
+Собирает MarinVPN для Android: бэкенд (этот репозиторий), ядро olcRTC и клиент
 VK TURN под android/arm64 — в app/src/main/jniLibs — и затем APK.
 
-    .\build.ps1 -Version v0.2.0
+    .\build.ps1 -Version v0.2.2
     .\build.ps1 -SkipCores            # ядро и клиент уже собраны
     .\build.ps1 -Task installRelease  # сразу поставить на телефон по adb
 
@@ -84,7 +84,7 @@ if ($LASTEXITCODE -ne 0) { throw "gradle $Task не удался" }
 
 if ($Task -eq "assembleRelease") {
     $apk = Join-Path $PSScriptRoot "app\build\outputs\apk\release\app-release.apk"
-    $dst = Join-Path $PSScriptRoot "olcvpn-$Version-android-arm64.apk"
+    $dst = Join-Path $PSScriptRoot "MarinVPN-$Version-android-arm64.apk"
     Copy-Item $apk $dst -Force
     Write-Host "готово: $dst"
 }

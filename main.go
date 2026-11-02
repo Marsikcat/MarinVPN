@@ -107,7 +107,7 @@ func (a *app) serve() (*http.Server, error) {
 	a.url = url
 	_ = os.WriteFile(filepath.Join(a.dir, "olcvpn.url"), []byte(url+"\n"), 0o600)
 
-	a.log.addf("olcvpn запущен, каталог %s", a.dir)
+	a.log.addf("MarinVPN запущен, каталог %s", a.dir)
 	if !isAdmin() {
 		a.log.add("права администратора отсутствуют — режим TUN будет недоступен")
 	}
@@ -125,7 +125,7 @@ func (a *app) serve() (*http.Server, error) {
 		}
 	}()
 
-	fmt.Println("olcvpn:", url)
+	fmt.Println("MarinVPN:", url)
 	return srv, nil
 }
 

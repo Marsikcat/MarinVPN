@@ -16,7 +16,7 @@ import java.util.concurrent.CopyOnWriteArraySet
 import kotlin.concurrent.thread
 
 /**
- * Бэкенд olcvpn — тот же Go-код, что и на ПК (каталог app/ репозитория),
+ * Бэкенд MarinVPN — тот же Go-код, что и на ПК (каталог app/ репозитория),
  * собранный под Android и уложенный в APK как libolcvpn.so. Оболочка
  * запускает его отдельным процессом, а дальше:
  *

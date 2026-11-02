@@ -16,7 +16,7 @@ import (
 var version = "dev"
 
 const (
-	updateRepo    = "Marsikcat/olcvpn"
+	updateRepo    = "Marsikcat/MarinVPN"
 	updateAPI     = "https://api.github.com/repos/" + updateRepo + "/releases/latest"
 	updateMaxSize = 300 << 20 // разумный потолок для архива релиза
 )
@@ -61,7 +61,7 @@ func checkUpdate() (updateInfo, error) {
 		return info, err
 	}
 	req.Header.Set("Accept", "application/vnd.github+json")
-	req.Header.Set("User-Agent", "olcvpn/"+version)
+	req.Header.Set("User-Agent", "MarinVPN/"+version)
 
 	resp, err := updateClient.Do(req)
 	if err != nil {

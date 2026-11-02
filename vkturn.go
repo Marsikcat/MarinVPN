@@ -289,7 +289,7 @@ func (t *Tunnel) StartVKTurn(cfg *Config, s *Server, withTUN bool) error {
 		return err
 	}
 	if withTUN && !isAdmin() {
-		return fmt.Errorf("для режима «Весь трафик» нужны права администратора — запустите olcvpn через start.cmd")
+		return fmt.Errorf("для режима «Весь трафик» нужны права администратора — запустите MarinVPN через start.cmd")
 	}
 
 	cmd := exec.Command(client, //nolint:gosec // app-owned binary and validated arguments
@@ -375,7 +375,7 @@ func (t *Tunnel) pumpVKTurn(r io.Reader, cfg *Config, s *Server, withTUN bool) {
 			t.vkAuthorized()
 
 		case strings.Contains(line, "[VK Auth] Call access saved"):
-			t.log.add("VK TURN: доступ к звонку запомнен — пока olcvpn открыт и VK его принимает, переподключения пойдут без капчи" + vkAccessLife(line))
+			t.log.add("VK TURN: доступ к звонку запомнен — пока MarinVPN открыт и VK его принимает, переподключения пойдут без капчи" + vkAccessLife(line))
 
 		case strings.Contains(line, "[VK Auth] Using the call access saved"):
 			t.log.add("VK TURN: доступ к звонку уже есть — капча не нужна")
@@ -538,7 +538,7 @@ func (t *Tunnel) startVKTurnSingBox(cfg *Config, s *Server, withTUN bool) error 
 // captcha the user already passed — while only sing-box is restarted.
 func (t *Tunnel) switchVKTurnMode(cfg *Config, s *Server, on bool) error {
 	if on && !isAdmin() {
-		return fmt.Errorf("для режима «Весь трафик» нужны права администратора — запустите olcvpn через start.cmd")
+		return fmt.Errorf("для режима «Весь трафик» нужны права администратора — запустите MarinVPN через start.cmd")
 	}
 	t.mu.Lock()
 	ready := t.peerSeen

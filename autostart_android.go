@@ -25,7 +25,7 @@ func enableAutostart() (string, error) {
 	if err := os.WriteFile(autostartFlag(), nil, 0o600); err != nil {
 		return "", err
 	}
-	return "Автозапуск включён: olcvpn запустится после перезагрузки телефона. " +
+	return "Автозапуск включён: MarinVPN запустится после перезагрузки телефона. " +
 		"Чтобы он сразу и подключался, включите «Подключаться сразу при запуске».", nil
 }
 
